@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:finvest/di/injection.dart';
 import 'package:finvest/domain/interfaces/i_connection_aware_facade.dart';
 import 'package:finvest/infrastructure/api_services/errors.dart';
-import 'package:finvest/infrastructure/dtos/connection_status.dart';
+import 'package:finvest/presentation/application/models/connection_status.dart';
 import 'package:finvest/presentation/application/base/base_bloc.dart';
 import 'package:finvest/presentation/core_app/base/app_life_cycle_observer.dart';
 import 'package:finvest/presentation/core_app/base/size_config.dart';

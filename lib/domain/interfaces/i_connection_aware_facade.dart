@@ -1,4 +1,4 @@
-import 'package:finvest/infrastructure/dtos/connection_status.dart';
+import 'package:finvest/presentation/application/models/connection_status.dart';
 
 abstract class IConnectionAwareFacade {
   Stream<ConnectionStatus> get connectionStatusStream;

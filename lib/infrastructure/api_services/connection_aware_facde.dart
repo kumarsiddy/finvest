@@ -4,7 +4,7 @@ import 'dart:io';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:finvest/domain/interfaces/i_connection_aware_facade.dart';
 import 'package:finvest/env.dart';
-import 'package:finvest/infrastructure/dtos/connection_status.dart';
+import 'package:finvest/presentation/application/models/connection_status.dart';
 import 'package:injectable/injectable.dart';
 import 'package:rxdart/rxdart.dart';
 

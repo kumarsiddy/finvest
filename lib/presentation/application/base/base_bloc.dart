@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:finvest/domain/interfaces/i_connection_aware_facade.dart';
 import 'package:finvest/infrastructure/api_services/logger.dart';
-import 'package:finvest/infrastructure/dtos/connection_status.dart';
+import 'package:finvest/presentation/application/models/connection_status.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -16,17 +16,14 @@ abstract class BaseBloc<Event extends BaseEvent, State extends BaseState>
 
   BaseBloc(
     this._networkHandlerFacade,
-  ) : super(InitialState(BaseStateStore())) {
+    BaseStateStore _store,
+  ) : super(InitialState(_store)) {
     if (!isClosed) {
       handleEvents();
     }
 
-    _networkChangeSubscription =
-        _networkHandlerFacade.connectionStatusStream.listen(
-      (status) => onConnectivityStatusChange(
-        status: status,
-      ),
-    );
+    _networkChangeSubscription = _networkHandlerFacade.connectionStatusStream
+        .listen((status) => onConnectivityStatusChange(status: status));
   }
 
   @mustCallSuper

@@ -49,4 +49,4 @@ final class ExceptionState extends BaseState {
   );
 }
 
-class BaseStateStore {}
+abstract class BaseStateStore {}
