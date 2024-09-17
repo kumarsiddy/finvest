@@ -1,4 +1,4 @@
-import 'package:finvest/presentation/core_app/design_library/text.dart';
+import 'package:finvest/presentation/shared/text.dart';
 import 'package:flutter/material.dart';
 
 class RowPairItem extends StatelessWidget {

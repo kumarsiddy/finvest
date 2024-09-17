@@ -1,4 +1,4 @@
-import 'package:finvest/presentation/core_app/design_library/app_colors.dart';
+import 'package:finvest/presentation/shared/app_colors.dart';
 import 'package:finvest/presentation/shared/widgets/app_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

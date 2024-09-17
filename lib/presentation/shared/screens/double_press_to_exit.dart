@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:finvest/presentation/core_app/design_library/app_colors.dart';
+import 'package:finvest/presentation/shared/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 

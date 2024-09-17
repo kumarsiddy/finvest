@@ -7,7 +7,7 @@ import 'package:finvest/presentation/application/base/base_bloc.dart';
 import 'package:finvest/presentation/application/models/connection_status.dart';
 import 'package:finvest/presentation/core_app/base/app_life_cycle_observer.dart';
 import 'package:finvest/presentation/core_app/base/size_config.dart';
-import 'package:finvest/presentation/core_app/design_library/app_colors.dart';
+import 'package:finvest/presentation/shared/app_colors.dart';
 import 'package:finvest/presentation/core_app/router/route_handler.dart';
 import 'package:finvest/presentation/shared/screens/double_press_to_exit.dart';
 import 'package:finvest/presentation/shared/screens/spinkit_loader.dart';

@@ -1,4 +1,4 @@
-import 'package:finvest/presentation/core_app/design_library/app_colors.dart';
+import 'package:finvest/presentation/shared/app_colors.dart';
 import 'package:finvest/presentation/shared/widgets/icon.dart';
 import 'package:finvest/utils/image_keys.dart';
 import 'package:finvest/utils/typedef.dart';
