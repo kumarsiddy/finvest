@@ -9,14 +9,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 part 'base_event.dart';
 part 'base_state.dart';
 
-abstract class BaseBloc<Event extends BaseEvent, State extends BaseState>
-    extends Bloc<BaseEvent, BaseState> {
+abstract class BaseBloc<Event extends BaseEvent, State extends BaseState,
+    Store extends BaseStateStore> extends Bloc<BaseEvent, BaseState> {
   final IConnectionAwareFacade _networkHandlerFacade;
   late StreamSubscription _networkChangeSubscription;
 
   BaseBloc(
     this._networkHandlerFacade,
-    BaseStateStore _store,
+    Store _store,
   ) : super(InitialState(_store)) {
     if (!isClosed) {
       handleEvents();

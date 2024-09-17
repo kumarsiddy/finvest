@@ -7,7 +7,8 @@ part 'home_page_event.dart';
 part 'home_page_state.dart';
 
 @injectable
-class HomePageBloc extends BaseBloc<HomePageEvent, HomePageState> {
+class HomePageBloc
+    extends BaseBloc<HomePageEvent, HomePageState, HomePageStore> {
   HomePageBloc(
     IConnectionAwareFacade networkHandlerFacade,
   ) : super(
