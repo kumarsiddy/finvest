@@ -44,15 +44,12 @@ abstract class BaseStatelessWidget<B extends BaseBloc> extends StatelessWidget
 
     return MultiBlocProvider(
       providers: [
-        BlocProvider(
-          create: (_) => getIt<BaseBloc>()..started(argsFromPreviousRoute),
-        ),
         if (wrapper.childBloc != null)
           BlocProvider(
             create: (_) => wrapper.childBloc!,
           ),
       ],
-      child: _BaseStatefulWidget(
+      child: _BaseStatefulWidget<B>(
         onStart: (ctx) => onStart(
           ctx,
           argsFromPreviousRoute,

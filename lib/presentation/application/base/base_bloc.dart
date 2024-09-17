@@ -118,9 +118,9 @@ abstract class BaseBloc<Event extends BaseEvent, State extends BaseState,
     Transition<BaseEvent, BaseState> transition,
   ) {
     logger
-      ..d('from base bloc ${transition.event}')
-      ..d('from base bloc current state ${transition.currentState}')
-      ..d('from base bloc next State ${transition.nextState}');
+      ..d('Event: ${transition.event}')
+      ..d('Current State: ${transition.currentState}')
+      ..d('Next State ${transition.nextState}');
     super.onTransition(transition);
   }
 

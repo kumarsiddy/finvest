@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:finvest/presentation/screen/homepage/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -66,6 +67,10 @@ abstract class RouteHandler {
   static Route<Map> generateRoute(RouteSettings routeSettings) {
     final routeID = _parseRouteFrom(routeSettings.name) ?? RouteId.noRoute;
     switch (routeID) {
+      case RouteId.homePage:
+        return MaterialPageRoute(
+          builder: (_) => HomePageScreen(),
+        );
       default:
         return MaterialPageRoute(
           builder: (_) => Scaffold(

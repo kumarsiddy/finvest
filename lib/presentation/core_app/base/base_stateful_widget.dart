@@ -1,6 +1,6 @@
 part of 'base_stateless_widget.dart';
 
-class _BaseStatefulWidget extends StatefulWidget {
+class _BaseStatefulWidget<B extends BaseBloc> extends StatefulWidget {
   final WidgetBuilderCallback builder;
   final BuildContextCallback onStart;
   final BuildContextCallback onResume;
@@ -21,10 +21,11 @@ class _BaseStatefulWidget extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<_BaseStatefulWidget> createState() => _BaseStatefulWidgetState();
+  State<_BaseStatefulWidget> createState() => _BaseStatefulWidgetState<B>();
 }
 
-class _BaseStatefulWidgetState extends State<_BaseStatefulWidget> {
+class _BaseStatefulWidgetState<B extends BaseBloc>
+    extends State<_BaseStatefulWidget> {
   late final AppLifeCycleObserver appLifeCycleObserver;
 
   @override
@@ -47,7 +48,7 @@ class _BaseStatefulWidgetState extends State<_BaseStatefulWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<BaseBloc, BaseState>(
+    return BlocConsumer<B, BaseState>(
       builder: _handleChild,
       listener: _handleState,
     );

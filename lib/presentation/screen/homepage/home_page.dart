@@ -21,5 +21,7 @@ class HomePageScreen extends BaseStatelessWidget<HomePageBloc> {
   Future<void> _handleState(
     BuildContext context,
     BaseState baseState,
-  ) async {}
+  ) async {
+    if (baseState is HomePageState) {}
+  }
 }
