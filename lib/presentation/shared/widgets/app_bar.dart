@@ -29,7 +29,17 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           }
         },
       ),
-      title: Body(text: title ?? ''),
+      actions: <Widget>[
+        IconButton(
+          icon: const Icon(Icons.info_outline),
+          tooltip: 'Information',
+          onPressed: () {},
+        ),
+      ],
+      title: Body(
+        text: title ?? '',
+        textAlign: TextAlign.start,
+      ),
     );
   }
 
