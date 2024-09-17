@@ -3,8 +3,8 @@ import 'dart:async';
 import 'package:finvest/di/injection.dart';
 import 'package:finvest/domain/interfaces/i_connection_aware_facade.dart';
 import 'package:finvest/infrastructure/api_services/errors.dart';
-import 'package:finvest/presentation/application/models/connection_status.dart';
 import 'package:finvest/presentation/application/base/base_bloc.dart';
+import 'package:finvest/presentation/application/models/connection_status.dart';
 import 'package:finvest/presentation/core_app/base/app_life_cycle_observer.dart';
 import 'package:finvest/presentation/core_app/base/size_config.dart';
 import 'package:finvest/presentation/core_app/design_library/app_colors.dart';
@@ -118,8 +118,10 @@ abstract class BaseStatelessWidget<B extends BaseBloc> extends StatelessWidget
 
   B? getImplementedBloc(
     BuildContext context,
-    Map<String, dynamic>? args,
-  );
+    Map<String, dynamic>? args,) {
+    return getIt<B>()
+      ..started(args);
+  }
 
   /// Called when the top route has been popped off, and the current route
   /// shows up.
