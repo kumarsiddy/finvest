@@ -65,16 +65,12 @@ To run this project, follow these steps:
 ### Screenshot
 
 ![App Screenshot](./screenshots/screenshot.jpg)
-<!-- Make sure to add the screenshot image file to the `screenshots` directory -->
 
 ### Screen Recording
 
 [![Watch the video](./screenshots/recording.gif)](./screenshots/recording.mp4)
-<!-- Add the screen recording file to the `screenrecording` directory. A gif for preview and a link to the mp4 for full view -->
 
 ## Evaluation
 
 The majority of the architectural setup is completed, including the integration of Bloc, dependency
 injection, and automatic network handling. I've completed first screen UI design.
-
-]()
