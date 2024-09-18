@@ -23,6 +23,8 @@ dependencies:
   dartz: ^0.10.1
   # dio -- To handle http network call
   dio: ^5.0.2
+  # to show the graph view
+  fl_chart: ^0.69.0
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.2

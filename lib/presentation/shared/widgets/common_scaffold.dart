@@ -16,12 +16,10 @@ class CommonScaffold extends StatefulWidget {
 }
 
 class _CommonScaffoldState extends State<CommonScaffold> {
-  int _selectedIndex = 0;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.white,
       appBar: CustomAppBar(
         title: 'Credit cards',
       ),
@@ -29,49 +27,8 @@ class _CommonScaffoldState extends State<CommonScaffold> {
         padding: const EdgeInsets.all(16.0),
         child: widget.child,
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        backgroundColor: AppColors.white,
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: BottomNavigationIcon(iconKey: 'assets/icons/home.svg'),
-            activeIcon:
-                BottomNavigationIcon(iconKey: 'assets/icons/home_filled.svg'),
-            label: 'HOME',
-          ),
-          BottomNavigationBarItem(
-            icon: BottomNavigationIcon(iconKey: 'assets/icons/invest.svg'),
-            activeIcon:
-                BottomNavigationIcon(iconKey: 'assets/icons/invest_filled.svg'),
-            label: 'INVEST',
-          ),
-          BottomNavigationBarItem(
-            icon: BottomNavigationIcon(iconKey: 'assets/icons/discover.svg'),
-            activeIcon: BottomNavigationIcon(
-                iconKey: 'assets/icons/discover_filled.svg'),
-            label: 'DISCOVER',
-          ),
-          BottomNavigationBarItem(
-            icon: BottomNavigationIcon(iconKey: 'assets/icons/account.png'),
-            activeIcon: BottomNavigationIcon(
-                iconKey: 'assets/icons/account_filled.png'),
-            label: 'ACCOUNT',
-          ),
-        ],
-        currentIndex: _selectedIndex,
-        selectedItemColor: AppColors.primary,
-        onTap: _onItemTapped,
-        selectedLabelStyle: TextStyle(fontSize: 12),
-        unselectedLabelStyle: TextStyle(fontSize: 12),
-        selectedIconTheme: IconThemeData(size: 30),
-        unselectedIconTheme: IconThemeData(size: 30),
-      ),
     );
   }
 
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
+
 }

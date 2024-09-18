@@ -96,7 +96,7 @@ class BottomNavigationIcon extends BaseImage {
     required final String iconKey,
   }) : super(
           imageKey: iconKey,
-          height: 30,
-          width: 30,
+          height: 24,
+          width: 24,
         );
 }

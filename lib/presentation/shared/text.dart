@@ -54,7 +54,7 @@ class Body extends BaseText {
     TextDecoration? textDecoration,
   }) : super(
           fontWeight: FontWeight.w500,
-          fontSize: 16.sp,
+          fontSize: 14.sp,
           color: color ?? AppColors.textPrimary,
           textDecoration: textDecoration ?? TextDecoration.none,
           textAlign: textAlign,
@@ -84,6 +84,20 @@ class Body extends BaseText {
   }) : super(
           fontWeight: FontWeight.w400,
           fontSize: 12.sp,
+          color: color ?? AppColors.textPrimary,
+          textDecoration: textDecoration ?? TextDecoration.none,
+          textAlign: textAlign,
+        );
+
+  Body.smallBold({
+    super.key,
+    required super.text,
+    Color? color,
+    TextAlign? textAlign,
+    TextDecoration? textDecoration,
+  }) : super(
+          fontWeight: FontWeight.w600,
+          fontSize: 10.sp,
           color: color ?? AppColors.textPrimary,
           textDecoration: textDecoration ?? TextDecoration.none,
           textAlign: textAlign,
@@ -149,4 +163,53 @@ class Label extends BaseText {
           textDecoration: textDecoration ?? TextDecoration.none,
           textAlign: textAlign,
         );
+}
+
+class CurrencyDisplayText extends StatelessWidget {
+  final double value;
+
+  const CurrencyDisplayText({
+    Key? key,
+    required this.value,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    List<String> parts = value.toStringAsFixed(2).split('.');
+    String mainPart = '\$${parts[0]}'; // Main number part
+    String decimalPart = '.${parts[1]}'; // Decimal part
+
+    return RichText(
+      textAlign: TextAlign.start,
+      text: TextSpan(
+        style: DefaultTextStyle.of(context).style,
+        children: <TextSpan>[
+          TextSpan(
+            text: mainPart,
+            style: TextStyle(
+              fontSize: 36.sp,
+              fontWeight: FontWeight.w500,
+              color: AppColors.textPrimary,
+            ),
+          ),
+          TextSpan(children: [
+            WidgetSpan(
+              child: Transform.translate(
+                offset: Offset(0, -10),
+                // Adjust the offset value to position the decimal part
+                child: Text(
+                  decimalPart,
+                  style: TextStyle(
+                    fontSize: 18.sp,
+                    fontWeight: FontWeight.w500,
+                    color: AppColors.textPrimary,
+                  ),
+                ),
+              ),
+            ),
+          ]),
+        ],
+      ),
+    );
+  }
 }

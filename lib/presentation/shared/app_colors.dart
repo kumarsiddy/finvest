@@ -4,6 +4,7 @@ abstract class AppColors {
   AppColors._();
 
   static const Color primary = Color(0xFF3856DD);
+  static const Color primaryVariation1 = Color(0xFFB1BFFF);
   static const Color primaryBackground = Color(0xFFF4F7FC);
   static const Color primaryDark = Color(0xFF071A34);
 
