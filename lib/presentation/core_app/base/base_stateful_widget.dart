@@ -48,7 +48,7 @@ class _BaseStatefulWidgetState<B extends BaseBloc>
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<B, BaseState>(
+    return BlocConsumer<CommonBloc, CommonState>(
       builder: _handleChild,
       listener: _handleState,
     );
@@ -56,7 +56,7 @@ class _BaseStatefulWidgetState<B extends BaseBloc>
 
   Widget _handleChild(
     BuildContext context,
-    BaseState state,
+    CommonState state,
   ) {
     return Stack(
       alignment: Alignment.center,
@@ -73,7 +73,7 @@ class _BaseStatefulWidgetState<B extends BaseBloc>
 
   void _handleState(
     BuildContext context,
-    BaseState state,
+    CommonState state,
   ) {
     switch (state) {
       case ConnectivityState():

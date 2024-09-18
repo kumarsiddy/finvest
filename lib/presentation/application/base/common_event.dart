@@ -1,10 +1,14 @@
 part of 'base_bloc.dart';
 
-abstract class BaseEvent {}
+sealed class CommonEvent {}
 
-final class OnStart extends BaseEvent {}
+final class OnStart extends CommonEvent {
+  final Map<String, dynamic>? args;
 
-final class ChangeLoaderStatus extends BaseEvent {
+  OnStart(this.args);
+}
+
+final class ChangeLoaderStatus extends CommonEvent {
   final bool loading;
 
   ChangeLoaderStatus({
@@ -12,7 +16,7 @@ final class ChangeLoaderStatus extends BaseEvent {
   });
 }
 
-final class OnConnectionStatusChange extends BaseEvent {
+final class OnConnectionStatusChange extends CommonEvent {
   final ConnectionStatus status;
 
   OnConnectionStatusChange({
@@ -20,7 +24,7 @@ final class OnConnectionStatusChange extends BaseEvent {
   });
 }
 
-final class OnError extends BaseEvent {
+final class OnError extends CommonEvent {
   final Exception exception;
 
   OnError({

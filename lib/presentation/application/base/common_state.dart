@@ -1,28 +1,32 @@
 part of 'base_bloc.dart';
 
-abstract class BaseState {
-  final BaseStateStore store;
+sealed class CommonState {
+  final CommonStore store;
 
-  const BaseState(this.store);
+  const CommonState(this.store);
 
-  BaseState getExceptionState(
+  CommonState getExceptionState(
     Exception exception,
   ) {
     return ExceptionState(store, exception);
   }
 
-  BaseState getLoaderState({
+  CommonState getLoaderState({
     required bool loading,
   }) {
     return LoaderState(store, loading);
   }
 }
 
-final class InitialState extends BaseState {
+final class InitialState extends CommonState {
   const InitialState(super.store);
 }
 
-final class ConnectivityState extends BaseState {
+final class ArgsLoadedState extends CommonState {
+  const ArgsLoadedState(super.store);
+}
+
+final class ConnectivityState extends CommonState {
   final ConnectionStatus status;
 
   const ConnectivityState(
@@ -31,7 +35,7 @@ final class ConnectivityState extends BaseState {
   );
 }
 
-final class LoaderState extends BaseState {
+final class LoaderState extends CommonState {
   final bool loading;
 
   const LoaderState(
@@ -40,7 +44,7 @@ final class LoaderState extends BaseState {
   );
 }
 
-final class ExceptionState extends BaseState {
+final class ExceptionState extends CommonState {
   final Exception exception;
 
   const ExceptionState(
@@ -48,5 +52,3 @@ final class ExceptionState extends BaseState {
     this.exception,
   );
 }
-
-abstract class BaseStateStore {}

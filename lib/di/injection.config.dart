@@ -14,6 +14,7 @@ import 'package:injectable/injectable.dart' as _i526;
 import '../domain/interfaces/i_connection_aware_facade.dart' as _i1004;
 import '../env.dart' as _i578;
 import '../infrastructure/api_services/connection_aware_facde.dart' as _i13;
+import '../presentation/application/base/common_bloc.dart' as _i105;
 import '../presentation/application/homepage/home_page_bloc.dart' as _i201;
 import 'injection_register_module.dart' as _i931;
 
@@ -40,8 +41,10 @@ extension GetItInjectableX on _i174.GetIt {
         _prod,
       },
     );
+    gh.factory<_i105.CommonBloc>(
+        () => _i105.CommonBloc(gh<_i1004.IConnectionAwareFacade>()));
     gh.factory<_i201.HomePageBloc>(
-        () => _i201.HomePageBloc(gh<_i1004.IConnectionAwareFacade>()));
+        () => _i201.HomePageBloc(gh<_i105.CommonBloc>()));
     return this;
   }
 }

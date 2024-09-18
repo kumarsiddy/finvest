@@ -185,7 +185,9 @@ class _HomePageWidgetState extends State<_HomePageWidget>
         ],
         currentIndex: _selectedIndex,
         selectedItemColor: AppColors.primary,
-        onTap: _onItemTapped,
+        onTap: (index) {
+          _onItemTapped(context, index);
+        },
         selectedLabelStyle: TextStyle(fontSize: 12),
         unselectedLabelStyle: TextStyle(fontSize: 12),
         selectedIconTheme: IconThemeData(size: 24),
@@ -194,7 +196,11 @@ class _HomePageWidgetState extends State<_HomePageWidget>
     );
   }
 
-  void _onItemTapped(int index) {
+  void _onItemTapped(
+    BuildContext context,
+    int index,
+  ) {
+    context.bloc<HomePageBloc>().changeDataSet(index);
     setState(() {
       _selectedIndex = index;
     });
@@ -209,52 +215,49 @@ class _LineChartData extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: SizeConfig.safeAreaScreenHeight / 3,
-      width: double.infinity,
-      child: LineChart(
-        LineChartData(
-          lineBarsData: [
-            LineChartBarData(
-              spots: const [
-                FlSpot(0, 3),
-                FlSpot(2.6, 2),
-                FlSpot(4.9, 5),
-                FlSpot(6.8, 3.1),
-                FlSpot(8, 4),
-                FlSpot(9.5, 3),
-                FlSpot(11, 4),
-              ],
-              isCurved: true,
-              gradient: LinearGradient(
-                colors: gradientColors,
-              ),
-              barWidth: 3,
-              isStrokeCapRound: true,
-              dotData: const FlDotData(
-                show: false,
-              ),
-              belowBarData: BarAreaData(
-                show: true,
-                gradient: LinearGradient(
-                  colors: gradientColors
-                      .map((color) => color.withOpacity(0.3))
-                      .toList(),
+    return BlocBuilder<HomePageBloc, HomePageState>(
+      builder: (context, state) {
+        return SizedBox(
+          height: SizeConfig.safeAreaScreenHeight / 3,
+          width: double.infinity,
+          child: LineChart(
+            LineChartData(
+              lineBarsData: [
+                LineChartBarData(
+                  spots: state.store.dataList,
+                  isCurved: true,
+                  gradient: LinearGradient(
+                    colors: gradientColors,
+                  ),
+                  barWidth: 3,
+                  isStrokeCapRound: true,
+                  dotData: const FlDotData(
+                    show: false,
+                  ),
+                  belowBarData: BarAreaData(
+                    show: true,
+                    gradient: LinearGradient(
+                      colors: gradientColors
+                          .map((color) => color.withOpacity(0.3))
+                          .toList(),
+                    ),
+                  ),
                 ),
+              ],
+              gridData: FlGridData(
+                show: false, // This removes the grid
+              ),
+              borderData: FlBorderData(
+                show: false, // This removes the border around the chart
+              ),
+              titlesData: FlTitlesData(
+                show:
+                    false, // This hides all the numbers and titles on the axes
               ),
             ),
-          ],
-          gridData: FlGridData(
-            show: false, // This removes the grid
           ),
-          borderData: FlBorderData(
-            show: false, // This removes the border around the chart
-          ),
-          titlesData: FlTitlesData(
-            show: false, // This hides all the numbers and titles on the axes
-          ),
-        ),
-      ),
+        );
+      },
     );
   }
 }

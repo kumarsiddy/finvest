@@ -1,132 +1,54 @@
-import 'dart:async';
-
-import 'package:finvest/domain/interfaces/i_connection_aware_facade.dart';
 import 'package:finvest/infrastructure/api_services/logger.dart';
+import 'package:finvest/presentation/application/base/common_bloc.dart';
 import 'package:finvest/presentation/application/models/connection_status.dart';
+import 'package:finvest/presentation/application/models/state_stores.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-part 'base_event.dart';
-part 'base_state.dart';
+part 'common_event.dart';
 
-abstract class BaseBloc<Event extends BaseEvent, State extends BaseState,
-    Store extends BaseStateStore> extends Bloc<BaseEvent, BaseState> {
-  final IConnectionAwareFacade _networkHandlerFacade;
-  late StreamSubscription _networkChangeSubscription;
+part 'common_state.dart';
 
-  BaseBloc(
-    this._networkHandlerFacade,
-    Store _store,
-  ) : super(InitialState(_store)) {
-    if (!isClosed) {
-      handleEvents();
-    }
+abstract class BaseBloc<Event, State> extends Bloc<Event, State> {
+  final CommonBloc _commonBloc;
 
-    _networkChangeSubscription = _networkHandlerFacade.connectionStatusStream
-        .listen((status) => onConnectivityStatusChange(status: status));
+  BaseBloc(this._commonBloc,
+      State initialState,) : super(initialState) {
+    handleEvents();
   }
+
+  void handleEvents();
+
+  CommonBloc get commonBloc => _commonBloc;
 
   @mustCallSuper
-  void handleEvents() {
-    on<OnStart>(_onStart);
-    on<ChangeLoaderStatus>(_changeLoaderStatus);
-    on<OnConnectionStatusChange>(_handleConnectivityChange);
-    on<OnError>(_onError);
-  }
-
-  void _onStart(
-    _,
-    Emitter<BaseState> emit,
-  ) {
-    emit(InitialState(state.store));
-  }
-
-  void _changeLoaderStatus(
-    ChangeLoaderStatus status,
-    Emitter<BaseState> emit,
-  ) {
-    emit(
-      LoaderState(
-        state.store,
-        status.loading,
-      ),
-    );
-  }
-
-  void _handleConnectivityChange(
-    OnConnectionStatusChange event,
-    Emitter<BaseState> emit,
-  ) {
-    emit(
-      ConnectivityState(state.store, event.status),
-    );
-  }
-
-  void _onError(
-    OnError event,
-    Emitter<BaseState> emit,
-  ) {
-    emit(
-      ExceptionState(
-        state.store,
-        event.exception,
-      ),
-    );
-  }
-
-  void onConnectivityStatusChange({
-    required ConnectionStatus status,
-  }) {
-    add(
-      OnConnectionStatusChange(
-        status: status,
-      ),
-    );
-  }
-
-  @mustCallSuper
-  void started([
+  void init([
     Map<String, dynamic>? args,
   ]) {
-    add(OnStart());
+    _commonBloc.init(args);
   }
 
   void invalidateLoader(
     Emitter<State> emit, {
     bool loading = false,
   }) {
-    emit(
-      state.getLoaderState(
-        loading: loading,
-      ) as State,
-    );
+    _commonBloc.invalidateLoader(loading: loading);
   }
 
   void handleException(
     Emitter<State> emit,
     Exception exception,
   ) {
-    emit(
-      state.getExceptionState(
-        exception,
-      ) as State,
-    );
+    _commonBloc.handleException(exception);
   }
 
   @override
-  void onTransition(
-    Transition<BaseEvent, BaseState> transition,
+  void onTransition(Transition<Event, State> transition,
   ) {
     logger
       ..d('Event: ${transition.event}')
       ..d('Current State: ${transition.currentState}')
       ..d('Next State ${transition.nextState}');
     super.onTransition(transition);
-  }
-
-  @override
-  Future<void> close() async {
-    await _networkChangeSubscription.cancel();
-    return super.close();
   }
 }

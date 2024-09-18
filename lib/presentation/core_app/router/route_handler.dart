@@ -1,7 +1,6 @@
 import 'dart:async';
 
-import 'package:finvest/presentation/core_app/home_page/home_page_screen.dart';
-import 'package:finvest/presentation/screen/credit_card_page/credit_card_page.dart';
+import 'package:finvest/presentation/screen/home_page/home_page_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -72,10 +71,6 @@ abstract class RouteHandler {
         return MaterialPageRoute(
           builder: (_) => HomePageScreen(),
         );
-      case RouteId.creditCardPage:
-        return MaterialPageRoute(
-          builder: (_) => CreditCardPageScreen(),
-        );
       default:
         return MaterialPageRoute(
           builder: (_) => Scaffold(
@@ -115,7 +110,6 @@ abstract class RouteHandler {
 
 enum RouteId {
   homePage,
-  creditCardPage,
   noRoute,
 }
 

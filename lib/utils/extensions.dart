@@ -7,13 +7,13 @@ extension ContextX on BuildContext {
     return BlocProvider.of<B>(this);
   }
 
-  S state<B extends BaseBloc, S extends BaseState>() {
+  S state<B extends BaseBloc, S extends CommonState>() {
     return BlocProvider.of<B>(this).state as S;
   }
 
   void started<T extends BaseBloc>(
     Map<String, dynamic>? args,
   ) {
-    BlocProvider.of<T>(this).started(args);
+    BlocProvider.of<T>(this).init(args);
   }
 }
