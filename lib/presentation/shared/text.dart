@@ -46,14 +46,14 @@ abstract class BaseText extends StatelessWidget {
 }
 
 class Body extends BaseText {
-  Body({
+  Body.big({
     super.key,
     required super.text,
     Color? color,
     TextAlign? textAlign,
     TextDecoration? textDecoration,
   }) : super(
-          fontWeight: FontWeight.w400,
+          fontWeight: FontWeight.w500,
           fontSize: 16.sp,
           color: color ?? AppColors.textPrimary,
           textDecoration: textDecoration ?? TextDecoration.none,
@@ -61,21 +61,7 @@ class Body extends BaseText {
           maxLines: 10,
         );
 
-  Body.semiBold({
-    super.key,
-    required super.text,
-    Color? color,
-    TextAlign? textAlign,
-    TextDecoration? textDecoration,
-  }) : super(
-          fontWeight: FontWeight.w600,
-          fontSize: 16.sp,
-          color: color ?? AppColors.textPrimary,
-          textDecoration: textDecoration ?? TextDecoration.none,
-          textAlign: textAlign,
-        );
-
-  Body.bold({
+  Body.medium({
     super.key,
     required super.text,
     Color? color,
@@ -105,34 +91,6 @@ class Body extends BaseText {
 }
 
 class Header extends BaseText {
-  Header({
-    super.key,
-    required super.text,
-    Color? color,
-    TextAlign? textAlign,
-    TextDecoration? textDecoration,
-  }) : super(
-          fontWeight: FontWeight.w400,
-          fontSize: 24.sp,
-          color: color ?? AppColors.textPrimary,
-          textDecoration: textDecoration ?? TextDecoration.none,
-          textAlign: textAlign,
-        );
-
-  Header.bold({
-    super.key,
-    required super.text,
-    Color? color,
-    TextAlign? textAlign,
-    TextDecoration? textDecoration,
-  }) : super(
-          fontWeight: FontWeight.w600,
-          fontSize: 32.sp,
-          color: color ?? AppColors.textPrimary,
-          textDecoration: textDecoration ?? TextDecoration.none,
-          textAlign: textAlign,
-        );
-
   Header.big({
     super.key,
     required super.text,
@@ -140,24 +98,53 @@ class Header extends BaseText {
     TextAlign? textAlign,
     TextDecoration? textDecoration,
   }) : super(
-          fontWeight: FontWeight.w700,
-          fontSize: 60.sp,
+          fontWeight: FontWeight.w500,
+          fontSize: 40.sp,
           color: color ?? AppColors.textPrimary,
           textDecoration: textDecoration ?? TextDecoration.none,
           textAlign: textAlign,
         );
-}
 
-class SmallText extends BaseText {
-  SmallText({
+  Header.medium({
     super.key,
     required super.text,
     Color? color,
     TextAlign? textAlign,
     TextDecoration? textDecoration,
   }) : super(
-          fontWeight: FontWeight.w400,
-          fontSize: 14.sp,
+          fontWeight: FontWeight.w500,
+          fontSize: 20.sp,
+          color: color ?? AppColors.textPrimary,
+          textDecoration: textDecoration ?? TextDecoration.none,
+          textAlign: textAlign,
+        );
+
+  /// 18px,500Wt
+  Header.small({
+    super.key,
+    required super.text,
+    Color? color,
+    TextAlign? textAlign,
+    TextDecoration? textDecoration,
+  }) : super(
+          fontWeight: FontWeight.w500,
+          fontSize: 18.sp,
+          color: color ?? AppColors.textPrimary,
+          textDecoration: textDecoration ?? TextDecoration.none,
+          textAlign: textAlign,
+        );
+}
+
+class Label extends BaseText {
+  Label.medium({
+    super.key,
+    required super.text,
+    Color? color,
+    TextAlign? textAlign,
+    TextDecoration? textDecoration,
+  }) : super(
+          fontWeight: FontWeight.w600,
+          fontSize: 10.sp,
           color: color ?? AppColors.textPrimary,
           textDecoration: textDecoration ?? TextDecoration.none,
           textAlign: textAlign,

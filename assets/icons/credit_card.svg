@@ -1,0 +1,14 @@
+<svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g id="Group">
+        <g id="Group_2">
+            <path id="Path" d="M3.75 11.251H26.25" stroke="#3856DD" stroke-width="1.60714"
+                stroke-linecap="round" stroke-linejoin="round" />
+            <path id="Path_2" d="M11.9625 16.251H8.75" stroke="#3856DD" stroke-width="1.60714"
+                stroke-linecap="round" stroke-linejoin="round" />
+            <path id="Path_3" fill-rule="evenodd" clip-rule="evenodd"
+                d="M22.5 23.751H7.5C5.42875 23.751 3.75 22.0722 3.75 20.001V10.001C3.75 7.92973 5.42875 6.25098 7.5 6.25098H22.5C24.5713 6.25098 26.25 7.92973 26.25 10.001V20.001C26.25 22.0722 24.5713 23.751 22.5 23.751Z"
+                stroke="#071A34" stroke-width="1.60714" stroke-linecap="round"
+                stroke-linejoin="round" />
+        </g>
+    </g>
+</svg>

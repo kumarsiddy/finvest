@@ -89,3 +89,14 @@ class FlexibleIcon extends BaseImage {
           width: width ?? height,
         );
 }
+
+class BottomNavigationIcon extends BaseImage {
+  const BottomNavigationIcon({
+    super.key,
+    required final String iconKey,
+  }) : super(
+          imageKey: iconKey,
+          height: 30,
+          width: 30,
+        );
+}

@@ -16,7 +16,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       backgroundColor: AppColors.white,
       elevation: 0.2,
-      centerTitle: true,
+      centerTitle: false,
       leading: IconButton(
         icon: Icon(
           Icons.arrow_back_ios,
@@ -36,9 +36,9 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           onPressed: () {},
         ),
       ],
-      title: Body(
+      title: Header.small(
         text: title ?? '',
-        textAlign: TextAlign.start,
+        textAlign: TextAlign.left,
       ),
     );
   }

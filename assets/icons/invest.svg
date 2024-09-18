@@ -1,0 +1,29 @@
+<svg width="31" height="30" viewBox="0 0 31 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g id="Group">
+        <path id="Path"
+            d="M16.7501 11.248C16.7501 12.6299 13.9514 13.7491 10.4987 13.7491C7.04476 13.7491 4.24609 12.6299 4.24609 11.248"
+            stroke="#071A34" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+        <path id="Path_2" d="M10.4974 18.751C7.04476 18.751 4.24609 17.6318 4.24609 16.25"
+            stroke="#071A34" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+        <path id="Path_3" d="M16.7506 6.24512H16.7519V13.7482" stroke="#071A34" stroke-width="1.6"
+            stroke-linecap="round" stroke-linejoin="round" />
+        <path id="Path_4"
+            d="M26.7524 18.751C26.7549 17.3692 23.9538 16.25 20.5023 16.25C17.0509 16.25 14.2497 17.3692 14.251 18.751C14.251 20.1329 17.0496 21.2521 20.5036 21.2521C23.9575 21.2521 26.7562 20.1329 26.7562 18.751"
+            stroke="#071A34" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+        <path id="Path_5"
+            d="M26.7549 18.751V23.7531C26.7549 25.1349 23.9563 26.2541 20.5036 26.2541C17.0496 26.2541 14.251 25.1349 14.251 23.7531V18.751"
+            stroke="#071A34" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+        <path id="Path_6" d="M10.4977 23.754C7.04503 23.754 4.24512 22.6348 4.24512 21.2529"
+            stroke="#071A34" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+        <ellipse id="Oval" cx="10.4977" cy="6.24616" rx="6.2526" ry="2.50104" stroke="#071A34"
+            stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+        <path id="Path_7" d="M4.24538 6.24512V21.2514" stroke="#071A34" stroke-width="1.6"
+            stroke-linecap="round" stroke-linejoin="round" />
+        <g id="Group 1116605308">
+            <path id="Path_8" d="M23.0032 6.24512V12.4977" stroke="#3856DD" stroke-width="1.6"
+                stroke-linecap="round" stroke-linejoin="round" />
+            <path id="Path_9" d="M25.505 8.74616L23.004 6.24512L20.5029 8.74616" stroke="#3856DD"
+                stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+        </g>
+    </g>
+</svg>

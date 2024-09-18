@@ -1,6 +1,6 @@
-part of 'home_page.dart';
+part of 'credit_card_page.dart';
 
-class HomePageWidget extends StatelessWidget {
+class _CreditCardPageWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CommonScaffold(
@@ -48,12 +48,12 @@ class _CreditCardWidget extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Body.semiBold(text: 'CHASE'),
-                    Body.semiBold(text: 'VISA'),
+                    Body.big(text: 'CHASE'),
+                    Body.big(text: 'VISA'),
                   ],
                 ),
                 SizedBox(height: 36),
-                Body.bold(text: '**** **** **** 7628'),
+                Body.big(text: '**** **** **** 7628'),
               ],
             ),
           ),
@@ -76,7 +76,7 @@ class _CreditCardWidget extends StatelessWidget {
                       text: 'TOTAL DUE',
                       color: Colors.white,
                     ),
-                    Body.semiBold(
+                    Body.big(
                       text: '\$24,890.00',
                       color: Colors.white,
                     ),
@@ -84,12 +84,43 @@ class _CreditCardWidget extends StatelessWidget {
                 ),
                 Spacer(),
                 FlexibleIcon(
-                  iconKey: 'assets/icons/sim.svg',
+                  iconKey: 'assets/icons/chip.svg',
                   height: 36,
                 )
               ],
             ),
           )
+        ],
+      ),
+    );
+  }
+}
+
+class _CreditCardInfoListWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(itemBuilder: (context, index) {});
+  }
+}
+
+class _CreditCardInfoItemWidget extends StatelessWidget {
+  final CreditCardItem creditCardItem;
+
+  const _CreditCardInfoItemWidget({
+    super.key,
+    required this.creditCardItem,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(8),
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          AppIcon(iconKey: creditCardItem.iconKey),
         ],
       ),
     );
