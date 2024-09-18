@@ -53,8 +53,8 @@ class Body extends BaseText {
     TextAlign? textAlign,
     TextDecoration? textDecoration,
   }) : super(
-          fontWeight: FontWeight.w500,
-          fontSize: 14.sp,
+          fontWeight: FontWeight.w600,
+          fontSize: 16.sp,
           color: color ?? AppColors.textPrimary,
           textDecoration: textDecoration ?? TextDecoration.none,
           textAlign: textAlign,
@@ -68,8 +68,8 @@ class Body extends BaseText {
     TextAlign? textAlign,
     TextDecoration? textDecoration,
   }) : super(
-          fontWeight: FontWeight.w600,
-          fontSize: 20.sp,
+          fontWeight: FontWeight.w400,
+          fontSize: 14.sp,
           color: color ?? AppColors.textPrimary,
           textDecoration: textDecoration ?? TextDecoration.none,
           textAlign: textAlign,
@@ -97,7 +97,7 @@ class Body extends BaseText {
     TextDecoration? textDecoration,
   }) : super(
           fontWeight: FontWeight.w600,
-          fontSize: 10.sp,
+          fontSize: 12.sp,
           color: color ?? AppColors.textPrimary,
           textDecoration: textDecoration ?? TextDecoration.none,
           textAlign: textAlign,

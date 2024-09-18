@@ -100,3 +100,14 @@ class BottomNavigationIcon extends BaseImage {
           width: 24,
         );
 }
+
+class SmallIcon extends BaseImage {
+  const SmallIcon({
+    super.key,
+    required final String iconKey,
+  }) : super(
+          imageKey: iconKey,
+          height: 16,
+          width: 16,
+        );
+}

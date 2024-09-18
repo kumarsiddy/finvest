@@ -36,7 +36,7 @@ class _HomePageWidgetState extends State<_HomePageWidget>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.white,
+      backgroundColor: AppColors.primaryBackground,
       body: DoublePressToExit(
         child: SingleChildScrollView(
           child: Column(
@@ -58,77 +58,88 @@ class _HomePageWidgetState extends State<_HomePageWidget>
                 ),
               ),
               _LineChartData(),
+              const SizedBox(height: 12),
               Padding(
-                padding: const EdgeInsets.all(16),
-                child: TabBar(
-                  controller: _tabController,
-                  labelColor: AppColors.primary,
-                  indicatorSize: TabBarIndicatorSize.tab,
-                  indicatorPadding: EdgeInsets.only(top: 6, bottom: 6),
-                  indicator: BoxDecoration(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 16,
+                ),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: AppColors.white,
                     borderRadius: BorderRadius.circular(8),
-                    color: AppColors.primary,
                   ),
-                  tabs: [
-                    Tab(
-                      child: Body.smallBold(
-                        text: '1W',
-                        color: _selectedTabIndex == 0
-                            ? AppColors.white
-                            : AppColors.textPrimary,
-                      ),
+                  child: TabBar(
+                    controller: _tabController,
+                    labelColor: AppColors.primary,
+                    indicatorSize: TabBarIndicatorSize.tab,
+                    indicatorPadding: EdgeInsets.only(top: 6, bottom: 6),
+                    indicator: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      color: AppColors.primary,
                     ),
-                    Tab(
-                      child: Body.smallBold(
-                        text: '1M',
-                        color: _selectedTabIndex == 1
-                            ? AppColors.white
-                            : AppColors.textPrimary,
+                    dividerColor: AppColors.transparent,
+                    tabs: [
+                      Tab(
+                        child: Label.medium(
+                          text: '1W',
+                          color: _selectedTabIndex == 0
+                              ? AppColors.white
+                              : AppColors.textPrimary,
+                        ),
                       ),
-                    ),
-                    Tab(
-                      child: Body.smallBold(
-                        text: '3M',
-                        color: _selectedTabIndex == 2
-                            ? AppColors.white
-                            : AppColors.textPrimary,
+                      Tab(
+                        child: Label.medium(
+                          text: '1M',
+                          color: _selectedTabIndex == 1
+                              ? AppColors.white
+                              : AppColors.textPrimary,
+                        ),
                       ),
-                    ),
-                    Tab(
-                      child: Body.smallBold(
-                        text: '6M',
-                        color: _selectedTabIndex == 3
-                            ? AppColors.white
-                            : AppColors.textPrimary,
+                      Tab(
+                        child: Label.medium(
+                          text: '3M',
+                          color: _selectedTabIndex == 2
+                              ? AppColors.white
+                              : AppColors.textPrimary,
+                        ),
                       ),
-                    ),
-                    Tab(
-                      child: Body.smallBold(
-                        text: 'YTD',
-                        color: _selectedTabIndex == 4
-                            ? AppColors.white
-                            : AppColors.textPrimary,
+                      Tab(
+                        child: Label.medium(
+                          text: '6M',
+                          color: _selectedTabIndex == 3
+                              ? AppColors.white
+                              : AppColors.textPrimary,
+                        ),
                       ),
-                    ),
-                    Tab(
-                      child: Body.smallBold(
-                        text: '1Y',
-                        color: _selectedTabIndex == 5
-                            ? AppColors.white
-                            : AppColors.textPrimary,
+                      Tab(
+                        child: Label.medium(
+                          text: 'YTD',
+                          color: _selectedTabIndex == 4
+                              ? AppColors.white
+                              : AppColors.textPrimary,
+                        ),
                       ),
-                    ),
-                    Tab(
-                      child: Body.smallBold(
-                        text: 'ALL',
-                        color: _selectedTabIndex == 6
-                            ? AppColors.white
-                            : AppColors.textPrimary,
+                      Tab(
+                        child: Label.medium(
+                          text: '1Y',
+                          color: _selectedTabIndex == 5
+                              ? AppColors.white
+                              : AppColors.textPrimary,
+                        ),
                       ),
-                    ),
-                  ],
+                      Tab(
+                        child: Label.medium(
+                          text: 'ALL',
+                          color: _selectedTabIndex == 6
+                              ? AppColors.white
+                              : AppColors.textPrimary,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
+              _CreditCardsWidget(),
             ],
           ),
         ),
@@ -236,6 +247,102 @@ class _LineChartData extends StatelessWidget {
             show: false, // This hides all the numbers and titles on the axes
           ),
         ),
+      ),
+    );
+  }
+}
+
+final _cardItems = [
+  CreditCardItem(
+    iconKey: 'assets/icons/wells_fargo.png',
+    title: "Wellsfargo Gold",
+    balance: 23456.99,
+    cardNumber: 'Asset ****6375',
+  ),
+  CreditCardItem(
+    iconKey: 'assets/icons/citi.png',
+    title: 'Citi Platinum',
+    balance: 23456.99,
+    cardNumber: 'Asset ****6006',
+  ),
+];
+
+class _CreditCardsWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(
+        horizontal: 12,
+        vertical: 12,
+      ),
+      child: Container(
+        width: double.infinity,
+        padding: EdgeInsets.all(12),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(16),
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Header.small(text: 'Credit Cards'),
+            Divider(thickness: 0.3),
+            ListView.builder(
+              itemCount: _cardItems.length,
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              itemBuilder: (context, index) {
+                return _CreditCardItem(cardItem: _cardItems[index]);
+              },
+            ),
+            Divider(thickness: 0.3),
+            Padding(
+              padding: EdgeInsets.symmetric(vertical: 8),
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SmallIcon(iconKey: 'assets/icons/add.svg'),
+                  Body.smallBold(text: 'ADD ACCOUNT'),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _CreditCardItem extends StatelessWidget {
+  final CreditCardItem cardItem;
+
+  const _CreditCardItem({
+    super.key,
+    required this.cardItem,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          AppIcon(iconKey: cardItem.iconKey),
+          SizedBox(width: 8),
+          Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Body.big(text: cardItem.title),
+              Body.small(text: cardItem.cardNumber),
+            ],
+          ),
+          Spacer(),
+          Body.big(text: '\$${cardItem.balance}')
+        ],
       ),
     );
   }
