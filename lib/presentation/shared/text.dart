@@ -187,7 +187,7 @@ class CurrencyDisplayText extends StatelessWidget {
           TextSpan(
             text: mainPart,
             style: TextStyle(
-              fontSize: 36.sp,
+              fontSize: 30.sp,
               fontWeight: FontWeight.w500,
               color: AppColors.textPrimary,
             ),

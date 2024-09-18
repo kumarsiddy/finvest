@@ -49,7 +49,7 @@ class _HomePageWidgetState extends State<_HomePageWidget>
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Body.big(
+                    Body.medium(
                       text: 'BALANCE DUE',
                       color: AppColors.textSecondary,
                     ),
