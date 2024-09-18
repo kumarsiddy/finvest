@@ -17,6 +17,11 @@ class _HomePageWidgetState extends State<_HomePageWidget>
     super.initState();
     _tabController = TabController(length: 7, vsync: this);
     _tabController.addListener(_handleTabSelection);
+
+    // Set the selected tab to the 3rd item (index 2)
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _tabController.index = _selectedTabIndex;
+    });
   }
 
   void _handleTabSelection() {
