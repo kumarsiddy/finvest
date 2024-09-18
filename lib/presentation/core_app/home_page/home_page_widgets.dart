@@ -140,6 +140,7 @@ class _HomePageWidgetState extends State<_HomePageWidget>
                 ),
               ),
               _CreditCardsWidget(),
+              _SpendCardWidget(),
             ],
           ),
         ),
@@ -303,8 +304,8 @@ class _CreditCardsWidget extends StatelessWidget {
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  SmallIcon(iconKey: 'assets/icons/add.svg'),
                   Body.smallBold(text: 'ADD ACCOUNT'),
+                  SmallIcon(iconKey: 'assets/icons/add.svg'),
                 ],
               ),
             ),
@@ -342,6 +343,116 @@ class _CreditCardItem extends StatelessWidget {
           ),
           Spacer(),
           Body.big(text: '\$${cardItem.balance}')
+        ],
+      ),
+    );
+  }
+}
+
+final _spendItems = [
+  SpendItem(
+    iconKey: 'assets/icons/burger.svg',
+    bgColor: 'D4EAF6',
+    title: "Foods & dining",
+    amount: 5300.32,
+    details: '90% of spends',
+  ),
+  SpendItem(
+    iconKey: 'assets/icons/electronics.svg',
+    bgColor: 'FCF0D6',
+    title: 'Apps & software',
+    amount: 2300.79,
+    details: '90% of spends',
+  ),
+  SpendItem(
+    iconKey: 'assets/icons/health_wellness.svg',
+    bgColor: 'E7E3FF',
+    title: 'Health & wellness',
+    amount: 1400.39,
+    details: '4% of spends',
+  ),
+];
+
+class _SpendCardWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(
+        horizontal: 12,
+        vertical: 12,
+      ),
+      child: Container(
+        width: double.infinity,
+        padding: EdgeInsets.all(12),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(16),
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Header.small(text: 'Top categories'),
+            Divider(thickness: 0.3),
+            ListView.builder(
+              itemCount: _spendItems.length,
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              itemBuilder: (context, index) {
+                return _SpendItemWidget(spendItem: _spendItems[index]);
+              },
+            ),
+            Divider(thickness: 0.3),
+            Padding(
+              padding: EdgeInsets.symmetric(vertical: 8),
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Body.smallBold(text: 'SEE ALL CATEGORIES'),
+                  const SizedBox(width: 4),
+                  SmallIcon(iconKey: 'assets/icons/right_arrow.svg'),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _SpendItemWidget extends StatelessWidget {
+  final SpendItem spendItem;
+
+  const _SpendItemWidget({
+    super.key,
+    required this.spendItem,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          CategoryIcon(
+            iconKey: spendItem.iconKey,
+            colorHash: spendItem.bgColor,
+          ),
+          SizedBox(width: 8),
+          Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Body.big(text: spendItem.title),
+              const SizedBox(width: 4),
+              Body.small(text: spendItem.details),
+            ],
+          ),
+          Spacer(),
+          Body.big(text: '\$${spendItem.amount}')
         ],
       ),
     );
