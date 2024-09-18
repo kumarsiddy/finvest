@@ -10,10 +10,11 @@ part 'home_page_state.dart';
 
 @injectable
 class HomePageBloc extends BaseBloc<HomePageEvent, HomePageState> {
-  HomePageBloc(CommonBloc commonBloc,
+  HomePageBloc(
+    CommonBloc commonBloc,
   ) : super(
           commonBloc,
-          InitialState(HomePageStore(dataList: _dataList1)),
+          InitialState(HomePageStore(dataList: _dataList4)),
         );
 
   @override
@@ -21,10 +22,17 @@ class HomePageBloc extends BaseBloc<HomePageEvent, HomePageState> {
     on<ChangeGraphDataEvent>(_onGraphDataChanged);
   }
 
-  void _onGraphDataChanged(
+  Future<void> _onGraphDataChanged(
     ChangeGraphDataEvent event,
     Emitter<HomePageState> emit,
-  ) {
+  ) async {
+    showLoader();
+    await Future.delayed(
+      Duration(seconds: 1),
+      () {
+        hideLoader();
+      },
+    );
     emit(
       GraphDataChangedState(
         state.store.copyWith(

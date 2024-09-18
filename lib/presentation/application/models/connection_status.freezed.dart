@@ -109,11 +109,12 @@ class __$$ConnectionStatusImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ConnectionStatusImpl implements _ConnectionStatus {
-  const _$ConnectionStatusImpl({required this.type, required this.working});
+  const _$ConnectionStatusImpl({required this.type, this.working = true});
 
   @override
   final ConnectivityResult type;
   @override
+  @JsonKey()
   final bool working;
 
   @override
@@ -146,7 +147,7 @@ class _$ConnectionStatusImpl implements _ConnectionStatus {
 abstract class _ConnectionStatus implements ConnectionStatus {
   const factory _ConnectionStatus(
       {required final ConnectivityResult type,
-      required final bool working}) = _$ConnectionStatusImpl;
+      final bool working}) = _$ConnectionStatusImpl;
 
   @override
   ConnectivityResult get type;

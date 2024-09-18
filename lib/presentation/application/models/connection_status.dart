@@ -7,6 +7,6 @@ part 'connection_status.freezed.dart';
 class ConnectionStatus with _$ConnectionStatus {
   const factory ConnectionStatus({
     required final ConnectivityResult type,
-    required final bool working,
+    @Default(true) final bool working,
   }) = _ConnectionStatus;
 }

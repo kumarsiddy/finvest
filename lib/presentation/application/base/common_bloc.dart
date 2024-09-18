@@ -38,11 +38,11 @@ class CommonBloc extends Bloc<CommonEvent, CommonState> {
   }
 
   void _changeLoaderStatus(
-    ChangeLoaderStatus status,
+    ChangeLoaderStatus event,
     Emitter<CommonState> emit,
   ) {
     emit(
-      LoaderState(state.store, status.loading),
+      LoaderState(state.store, event.loading),
     );
   }
 

@@ -62,11 +62,10 @@ class _BaseStatefulWidgetState<B extends BaseBloc>
       alignment: Alignment.center,
       children: [
         widget.builder(context),
-        if (state.store is LoaderState && (state.store as LoaderState).loading)
-          const SpinkitLoader(),
-        if (state.store is ConnectivityState &&
-            !(state.store as ConnectivityState).status.working)
-          _NoInternetPage(),
+        if (state is LoaderState)
+          state.loading ? const SpinkitLoader() : const SizedBox.shrink(),
+        // if (state is ConnectivityState)
+        //   !state.status.working ? _NoInternetPage() : const SizedBox.shrink(),
       ],
     );
   }

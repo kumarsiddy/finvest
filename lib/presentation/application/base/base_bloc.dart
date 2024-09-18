@@ -12,8 +12,10 @@ part 'common_state.dart';
 abstract class BaseBloc<Event, State> extends Bloc<Event, State> {
   final CommonBloc _commonBloc;
 
-  BaseBloc(this._commonBloc,
-      State initialState,) : super(initialState) {
+  BaseBloc(
+    this._commonBloc,
+    State initialState,
+  ) : super(initialState) {
     handleEvents();
   }
 
@@ -28,22 +30,29 @@ abstract class BaseBloc<Event, State> extends Bloc<Event, State> {
     _commonBloc.init(args);
   }
 
-  void invalidateLoader(
-    Emitter<State> emit, {
+  void showLoader() {
+    _invalidateLoader(loading: true);
+  }
+
+  void hideLoader() {
+    _invalidateLoader(loading: false);
+  }
+
+  void _invalidateLoader({
     bool loading = false,
   }) {
     _commonBloc.invalidateLoader(loading: loading);
   }
 
   void handleException(
-    Emitter<State> emit,
     Exception exception,
   ) {
     _commonBloc.handleException(exception);
   }
 
   @override
-  void onTransition(Transition<Event, State> transition,
+  void onTransition(
+    Transition<Event, State> transition,
   ) {
     logger
       ..d('Event: ${transition.event}')

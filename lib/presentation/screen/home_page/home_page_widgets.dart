@@ -83,6 +83,9 @@ class _HomePageWidgetState extends State<_HomePageWidget>
                       color: AppColors.primary,
                     ),
                     dividerColor: AppColors.transparent,
+                    onTap: (index) {
+                      context.bloc<HomePageBloc>().changeDataSet(index);
+                    },
                     tabs: [
                       Tab(
                         child: Label.medium(
@@ -185,9 +188,7 @@ class _HomePageWidgetState extends State<_HomePageWidget>
         ],
         currentIndex: _selectedIndex,
         selectedItemColor: AppColors.primary,
-        onTap: (index) {
-          _onItemTapped(context, index);
-        },
+        onTap: _onItemTapped,
         selectedLabelStyle: TextStyle(fontSize: 12),
         unselectedLabelStyle: TextStyle(fontSize: 12),
         selectedIconTheme: IconThemeData(size: 24),
@@ -196,11 +197,7 @@ class _HomePageWidgetState extends State<_HomePageWidget>
     );
   }
 
-  void _onItemTapped(
-    BuildContext context,
-    int index,
-  ) {
-    context.bloc<HomePageBloc>().changeDataSet(index);
+  void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
     });
