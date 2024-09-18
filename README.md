@@ -1,4 +1,4 @@
-[# finvest
+# finvest
 
 A Flutter project that follows the MVVM architecture pattern with Bloc for state management,
 designed to be modular, reusable, and scalable. This project incorporates best practices for
