@@ -54,7 +54,7 @@ class Body extends BaseText {
     TextDecoration? textDecoration,
   }) : super(
           fontWeight: FontWeight.w500,
-          fontSize: 16.sp,
+          fontSize: 15.sp,
           color: color ?? AppColors.textPrimary,
           textDecoration: textDecoration ?? TextDecoration.none,
           textAlign: textAlign,

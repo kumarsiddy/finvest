@@ -4,6 +4,7 @@ import 'package:finvest/presentation/application/base/base_bloc.dart';
 import 'package:finvest/presentation/application/homepage/home_page_bloc.dart';
 import 'package:finvest/presentation/application/models/credit_card_item.dart';
 import 'package:finvest/presentation/application/models/spend_item.dart';
+import 'package:finvest/presentation/application/models/txn_item.dart';
 import 'package:finvest/presentation/core_app/base/base_stateless_widget.dart';
 import 'package:finvest/presentation/core_app/base/size_config.dart';
 import 'package:finvest/presentation/shared/app_colors.dart';

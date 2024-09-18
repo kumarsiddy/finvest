@@ -141,6 +141,7 @@ class _HomePageWidgetState extends State<_HomePageWidget>
               ),
               _CreditCardsWidget(),
               _SpendCardWidget(),
+              _TxnCardWidget(),
             ],
           ),
         ),
@@ -171,9 +172,9 @@ class _HomePageWidgetState extends State<_HomePageWidget>
             label: 'DISCOVER',
           ),
           BottomNavigationBarItem(
-            icon: BottomNavigationIcon(iconKey: 'assets/icons/account.png'),
+            icon: BottomNavigationIcon(iconKey: 'assets/images/account.png'),
             activeIcon: BottomNavigationIcon(
-                iconKey: 'assets/icons/account_filled.png'),
+                iconKey: 'assets/images/account_filled.png'),
             label: 'ACCOUNT',
           ),
         ],
@@ -255,13 +256,13 @@ class _LineChartData extends StatelessWidget {
 
 final _cardItems = [
   CreditCardItem(
-    iconKey: 'assets/icons/wells_fargo.png',
+    iconKey: 'assets/images/wells_fargo.png',
     title: "Wellsfargo Gold",
     balance: 23456.99,
     cardNumber: 'Asset ****6375',
   ),
   CreditCardItem(
-    iconKey: 'assets/icons/citi.png',
+    iconKey: 'assets/images/citi.png',
     title: 'Citi Platinum',
     balance: 23456.99,
     cardNumber: 'Asset ****6006',
@@ -303,8 +304,10 @@ class _CreditCardsWidget extends StatelessWidget {
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Body.smallBold(text: 'ADD ACCOUNT'),
+                  const SizedBox(width: 4),
                   SmallIcon(iconKey: 'assets/icons/add.svg'),
                 ],
               ),
@@ -342,7 +345,7 @@ class _CreditCardItem extends StatelessWidget {
             ],
           ),
           Spacer(),
-          Body.big(text: '\$${cardItem.balance}')
+          Body.big(text: '- \$${cardItem.balance}')
         ],
       ),
     );
@@ -408,6 +411,7 @@ class _SpendCardWidget extends StatelessWidget {
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Body.smallBold(text: 'SEE ALL CATEGORIES'),
                   const SizedBox(width: 4),
@@ -452,7 +456,117 @@ class _SpendItemWidget extends StatelessWidget {
             ],
           ),
           Spacer(),
-          Body.big(text: '\$${spendItem.amount}')
+          Body.big(text: '- \$${spendItem.amount}')
+        ],
+      ),
+    );
+  }
+}
+
+final _txnItems = [
+  TxnItem(
+    iconKey: 'assets/images/uber.png',
+    title: "Uber",
+    amount: 82.99,
+    details: '22 Jun 24, 4:25pm • Pending',
+  ),
+  TxnItem(
+    iconKey: 'assets/images/macd.png',
+    title: "Mc Donalds",
+    amount: 110.99,
+    details: '23 July 24, 4:15pm • Pending',
+  ),
+  TxnItem(
+    iconKey: 'assets/images/ikea.png',
+    title: "Ikea",
+    amount: 123.79,
+    details: '22 Jun 24, 4:25pm',
+  ),
+  TxnItem(
+    iconKey: 'assets/images/jbl.png',
+    title: "JBL",
+    amount: 39.48,
+    details: '22 Jun 24, 4:25pm',
+  ),
+];
+
+class _TxnCardWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(
+        horizontal: 12,
+        vertical: 12,
+      ),
+      child: Container(
+        width: double.infinity,
+        padding: EdgeInsets.all(12),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(16),
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Header.small(text: 'Recent Transactions'),
+            Divider(thickness: 0.3),
+            ListView.builder(
+              itemCount: _txnItems.length,
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              itemBuilder: (context, index) {
+                return _TxnCardItem(txnItem: _txnItems[index]);
+              },
+            ),
+            Divider(thickness: 0.3),
+            Padding(
+              padding: EdgeInsets.symmetric(vertical: 8),
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Body.smallBold(text: 'SEE ALL TRANSACTIONS'),
+                  const SizedBox(width: 4),
+                  SmallIcon(iconKey: 'assets/icons/right_arrow.svg'),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _TxnCardItem extends StatelessWidget {
+  final TxnItem txnItem;
+
+  const _TxnCardItem({
+    super.key,
+    required this.txnItem,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          AppIcon(iconKey: txnItem.iconKey),
+          SizedBox(width: 8),
+          Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Body.big(text: txnItem.title),
+              Body.small(text: txnItem.details),
+            ],
+          ),
+          Spacer(),
+          Body.big(text: '- \$${txnItem.amount}')
         ],
       ),
     );
