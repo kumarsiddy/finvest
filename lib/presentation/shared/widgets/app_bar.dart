@@ -17,18 +17,20 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       backgroundColor: AppColors.white,
       elevation: 0.2,
       centerTitle: false,
-      leading: IconButton(
-        icon: Icon(
-          Icons.arrow_back_ios,
-          size: Navigator.canPop(context) ? 16.r : 0,
-          color: AppColors.primaryDark,
-        ),
-        onPressed: () {
-          if (Navigator.canPop(context)) {
-            Navigator.of(context).pop();
-          }
-        },
-      ),
+      // leading: Navigator.canPop(context)
+      //     ? IconButton(
+      //         icon: Icon(
+      //           Icons.arrow_back_ios,
+      //     size: Navigator.canPop(context) ? 16.r : 0,
+      //     color: AppColors.primaryDark,
+      //   ),
+      //   onPressed: () {
+      //     if (Navigator.canPop(context)) {
+      //       Navigator.of(context).pop();
+      //     }
+      //   },
+      //       )
+      //     : SizedBox.shrink(),
       actions: <Widget>[
         IconButton(
           icon: const Icon(Icons.info_outline),
