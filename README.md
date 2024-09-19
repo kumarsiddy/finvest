@@ -1,4 +1,4 @@
-# finvest
+# Project Finvest
 
 A Flutter project that follows the MVVM architecture pattern with Bloc for state management,
 designed to be modular, reusable, and scalable. This project incorporates best practices for
@@ -57,11 +57,14 @@ To run this project, follow these steps:
    ```bash
    git clone https://github.com/kumarsiddy/finvest
 2. Navigate to the project directory:
-   ```cd finvest```
+    ```bash
+   cd finvest
 3. Install dependencies:
-   ```flutter pub get```
+    ```bash
+   flutter pub get
 4. Run the project:
-   ```flutter run```
+    ```bash
+   flutter run
 
 ## Screenshots & Screen Recording
 
