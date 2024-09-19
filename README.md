@@ -70,7 +70,7 @@ To run this project, follow these steps:
 
 ### Screenshot
 
-<img src="./screenshots/screenshot.jpg" alt="App Screenshot" width="400" height="800"/>
+<img src="./screenshots/screenshot.jpg" alt="App Screenshot" width="400"/>
 
 ### Screen Recording
 
