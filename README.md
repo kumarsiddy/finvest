@@ -70,11 +70,13 @@ To run this project, follow these steps:
 
 ### Screenshot
 
-![App Screenshot](./screenshots/screenshot.jpg)
+<img src="./screenshots/screenshot.jpg" alt="App Screenshot" width="400" height="800"/>
 
 ### Screen Recording
 
-[![Watch the video](./screenshots/recording.gif)](./screenshots/recording.mp4)
+<a href="./screenshots/recording.mp4">
+  <img src="./screenshots/recording.gif" alt="Watch the video" width="400" height="800"/>
+</a>
 
 ## Evaluation
 
