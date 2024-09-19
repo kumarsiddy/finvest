@@ -32,8 +32,11 @@ functionalities are abstracted into base classes, making the app both scalable a
 
 ### 2. **Design Setup**
 
-The design is being worked on currently. The initial screen designs will be completed shortly, and
-further updates will follow.
+I've successfully completed the first screen using Material and a modular design approach. Each
+screen is responsive and adapts automatically to different screen sizes. I've also broken down
+various design elements into reusable widgets, making it easier to implement across multiple
+screens. To streamline development, I've created modular components for text, scaffolds, loading
+screens, and 'no connectivity' screens, reducing the need for repetitive definitions.
 
 ## Features
 
