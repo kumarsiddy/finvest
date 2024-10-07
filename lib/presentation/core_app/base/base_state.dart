@@ -36,6 +36,8 @@ abstract class BaseState<
   @override
   void initState() {
     _bloc = getImplementedBloc(context);
+    viewController = getViewController();
+
     appLifeCycleObserver = AppLifeCycleObserver(
       suspendingCallBack: () async {
         onSuspend(context);

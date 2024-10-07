@@ -1,15 +1,18 @@
 part of 'home_page_screen.dart';
 
 class _HomePageWidget extends StatefulWidget {
+  final HomePageViewController controller;
+
+  _HomePageWidget(
+    this.controller,
+  );
+
   @override
   State<_HomePageWidget> createState() => _HomePageWidgetState();
 }
 
 class _HomePageWidgetState extends State<_HomePageWidget>
     with SingleTickerProviderStateMixin {
-  int _selectedIndex = 0;
-  int _selectedTabIndex = 3;
-
   late TabController _tabController;
 
   @override
@@ -20,14 +23,14 @@ class _HomePageWidgetState extends State<_HomePageWidget>
 
     // Set the selected tab to the 3rd item (index 2)
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      _tabController.index = _selectedTabIndex;
+      _tabController.index = widget.controller.selectedIndex;
     });
   }
 
   void _handleTabSelection() {
     if (_tabController.indexIsChanging) {
       setState(() {
-        _selectedTabIndex = _tabController.index;
+        widget.controller.selectedTabIndex = _tabController.index;
       });
     }
   }
@@ -90,7 +93,7 @@ class _HomePageWidgetState extends State<_HomePageWidget>
                       Tab(
                         child: Label.medium(
                           text: '1W',
-                          color: _selectedTabIndex == 0
+                          color: widget.controller.selectedTabIndex == 0
                               ? AppColors.white
                               : AppColors.textPrimary,
                         ),
@@ -98,7 +101,7 @@ class _HomePageWidgetState extends State<_HomePageWidget>
                       Tab(
                         child: Label.medium(
                           text: '1M',
-                          color: _selectedTabIndex == 1
+                          color: widget.controller.selectedTabIndex == 1
                               ? AppColors.white
                               : AppColors.textPrimary,
                         ),
@@ -106,7 +109,7 @@ class _HomePageWidgetState extends State<_HomePageWidget>
                       Tab(
                         child: Label.medium(
                           text: '3M',
-                          color: _selectedTabIndex == 2
+                          color: widget.controller.selectedTabIndex == 2
                               ? AppColors.white
                               : AppColors.textPrimary,
                         ),
@@ -114,7 +117,7 @@ class _HomePageWidgetState extends State<_HomePageWidget>
                       Tab(
                         child: Label.medium(
                           text: '6M',
-                          color: _selectedTabIndex == 3
+                          color: widget.controller.selectedTabIndex == 3
                               ? AppColors.white
                               : AppColors.textPrimary,
                         ),
@@ -122,7 +125,7 @@ class _HomePageWidgetState extends State<_HomePageWidget>
                       Tab(
                         child: Label.medium(
                           text: 'YTD',
-                          color: _selectedTabIndex == 4
+                          color: widget.controller.selectedTabIndex == 4
                               ? AppColors.white
                               : AppColors.textPrimary,
                         ),
@@ -130,7 +133,7 @@ class _HomePageWidgetState extends State<_HomePageWidget>
                       Tab(
                         child: Label.medium(
                           text: '1Y',
-                          color: _selectedTabIndex == 5
+                          color: widget.controller.selectedTabIndex == 5
                               ? AppColors.white
                               : AppColors.textPrimary,
                         ),
@@ -138,7 +141,7 @@ class _HomePageWidgetState extends State<_HomePageWidget>
                       Tab(
                         child: Label.medium(
                           text: 'ALL',
-                          color: _selectedTabIndex == 6
+                          color: widget.controller.selectedTabIndex == 6
                               ? AppColors.white
                               : AppColors.textPrimary,
                         ),
@@ -186,7 +189,7 @@ class _HomePageWidgetState extends State<_HomePageWidget>
             label: 'ACCOUNT',
           ),
         ],
-        currentIndex: _selectedIndex,
+        currentIndex: widget.controller.selectedIndex,
         selectedItemColor: AppColors.primary,
         onTap: _onItemTapped,
         selectedLabelStyle: TextStyle(fontSize: 12),
@@ -199,7 +202,7 @@ class _HomePageWidgetState extends State<_HomePageWidget>
 
   void _onItemTapped(int index) {
     setState(() {
-      _selectedIndex = index;
+      widget.controller.selectedIndex = index;
     });
   }
 }

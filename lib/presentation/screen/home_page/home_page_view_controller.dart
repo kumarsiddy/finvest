@@ -3,6 +3,9 @@ import 'package:injectable/injectable.dart';
 
 @injectable
 class HomePageViewController extends BaseViewController {
+  int selectedIndex = 0;
+  int selectedTabIndex = 3;
+
   @override
   Future<void> dispose() async {}
 

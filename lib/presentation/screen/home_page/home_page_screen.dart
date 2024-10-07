@@ -28,7 +28,7 @@ class HomePageScreenState
   Widget buildWidget(BuildContext context) {
     return BlocConsumer<HomePageBloc, HomePageState>(
       builder: (context, state) {
-        return _HomePageWidget();
+        return _HomePageWidget(viewController!);
       },
       listener: _handleState,
     );
