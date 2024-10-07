@@ -3,9 +3,7 @@ part of 'base_bloc.dart';
 sealed class CommonEvent {}
 
 final class OnStart extends CommonEvent {
-  final Map<String, dynamic>? args;
-
-  OnStart(this.args);
+  OnStart();
 }
 
 final class ChangeLoaderStatus extends CommonEvent {

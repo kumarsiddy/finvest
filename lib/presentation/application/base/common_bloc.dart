@@ -34,7 +34,7 @@ class CommonBloc extends Bloc<CommonEvent, CommonState> {
     OnStart event,
     Emitter<CommonState> emit,
   ) {
-    emit(ArgsLoadedState(state.store.copyWith(args: event.args)));
+    emit(ArgsLoadedState(state.store));
   }
 
   void _changeLoaderStatus(
@@ -74,10 +74,8 @@ class CommonBloc extends Bloc<CommonEvent, CommonState> {
     );
   }
 
-  void init([
-    Map<String, dynamic>? args,
-  ]) {
-    add(OnStart(args));
+  void init() {
+    add(OnStart());
   }
 
   void invalidateLoader({

@@ -11,9 +11,7 @@ extension ContextX on BuildContext {
     return BlocProvider.of<B>(this).state as S;
   }
 
-  void started<T extends BaseBloc>(
-    Map<String, dynamic>? args,
-  ) {
-    BlocProvider.of<T>(this).init(args);
+  void started<T extends BaseBloc>() {
+    BlocProvider.of<T>(this).init();
   }
 }

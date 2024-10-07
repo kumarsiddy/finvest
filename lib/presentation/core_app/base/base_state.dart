@@ -35,11 +35,7 @@ abstract class BaseState<
 
   @override
   void initState() {
-    argsFromPreviousRoute = getArgsFromContext(context);
-    _bloc = getImplementedBloc(
-      context,
-      argsFromPreviousRoute,
-    );
+    _bloc = getImplementedBloc(context);
     appLifeCycleObserver = AppLifeCycleObserver(
       suspendingCallBack: () async {
         onSuspend(context);
@@ -52,9 +48,17 @@ abstract class BaseState<
     WidgetsBinding.instance.addObserver(
       appLifeCycleObserver,
     );
-    onStart(context, argsFromPreviousRoute);
+    onStart(context);
     _viewController?.init();
     super.initState();
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    // Initializing SizeConfig for the first time
+    SizeConfig.init(context);
+    argsFromPreviousRoute = getArgsFromContext(context);
   }
 
   @override
@@ -83,17 +87,13 @@ abstract class BaseState<
     ConnectionStatus status,
   ) {
     if (forceRefreshOnConnectionChange && status.working) {
-      final args = getArgsFromContext(context);
-      context.started<B>(args);
+      context.started<B>();
     }
   }
 
   /// This method will be called when widget will be started
   @mustCallSuper
-  Future<void> onStart(
-    BuildContext context,
-    Map<String, dynamic>? args,
-  ) async {
+  Future<void> onStart(BuildContext context) async {
     SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle(
         statusBarColor: statusBarColor,
@@ -192,13 +192,6 @@ abstract class BaseState<
   }
 
   @override
-  void didChangeDependencies() {
-    // Initializing SizeConfig for the first time
-    SizeConfig.init(context);
-    super.didChangeDependencies();
-  }
-
-  @override
   void dispose() {
     WidgetsBinding.instance.removeObserver(
       appLifeCycleObserver,
@@ -210,9 +203,8 @@ abstract class BaseState<
 
   B? getImplementedBloc(
     BuildContext context,
-    Map<String, dynamic>? args,
   ) {
-    return getIt<B>()..init(args);
+    return getIt<B>()..init();
   }
 
   VC? getViewController() {

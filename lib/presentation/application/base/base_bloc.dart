@@ -6,7 +6,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 part 'common_event.dart';
-
 part 'common_state.dart';
 
 abstract class BaseBloc<Event, State> extends Bloc<Event, State> {
@@ -24,10 +23,8 @@ abstract class BaseBloc<Event, State> extends Bloc<Event, State> {
   CommonBloc get commonBloc => _commonBloc;
 
   @mustCallSuper
-  void init([
-    Map<String, dynamic>? args,
-  ]) {
-    _commonBloc.init(args);
+  void init() {
+    _commonBloc.init();
   }
 
   void showLoader() {
