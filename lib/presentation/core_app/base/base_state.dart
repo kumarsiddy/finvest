@@ -30,7 +30,7 @@ abstract class BaseState<
   late final AppLifeCycleObserver appLifeCycleObserver;
 
   B? _bloc;
-  VC? _viewController;
+  VC? viewController;
   Map<String, dynamic>? argsFromPreviousRoute;
 
   @override
@@ -49,7 +49,7 @@ abstract class BaseState<
       appLifeCycleObserver,
     );
     onStart(context);
-    _viewController?.init();
+    viewController?.init();
     super.initState();
   }
 
@@ -197,7 +197,7 @@ abstract class BaseState<
       appLifeCycleObserver,
     );
     onDestroy(context);
-    _viewController?.dispose();
+    viewController?.dispose();
     super.dispose();
   }
 
