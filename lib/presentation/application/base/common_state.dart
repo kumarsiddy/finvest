@@ -4,18 +4,6 @@ sealed class CommonState {
   final CommonStore store;
 
   const CommonState(this.store);
-
-  CommonState getExceptionState(
-    Exception exception,
-  ) {
-    return ExceptionState(store, exception);
-  }
-
-  CommonState getLoaderState({
-    required bool loading,
-  }) {
-    return LoaderState(store, loading);
-  }
 }
 
 final class InitialState extends CommonState {
