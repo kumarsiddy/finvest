@@ -1,4 +1,4 @@
-part of 'base_stateless_widget.dart';
+part of 'base_state.dart';
 
 class _NoInternetPage extends StatelessWidget {
   @override
