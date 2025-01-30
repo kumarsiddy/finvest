@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "179750771032",
+    "project_id": "finvest-e4748",
+    "storage_bucket": "finvest-e4748.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:179750771032:android:8f6c34d5bed9c802c76d2d",
+        "android_client_info": {
+          "package_name": "com.bondgrid.bondgrid"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB4D_RwAXHWv4KzpuFAQQHeH5iyezIXYZs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
